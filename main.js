@@ -198,8 +198,8 @@ if (require.main === module) {
       await fillTimeSheet(page);
 
       // Keep browser open for 30 seconds to allow manual inspection
-      // setTimeout(() => browser.close(), 30000);
-      browser.close();
+      setTimeout(() => browser.close(), 5000);
+      // browser.close();
 
       console.log('Automation completed successfully!');
       console.log('Result:', {
