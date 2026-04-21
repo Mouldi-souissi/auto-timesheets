@@ -1,9 +1,7 @@
-name: Weekly Timesheet Automation
+name: Timesheet Automation
 
 on:
-  schedule:
-    - cron: '30 21 * * 5'   # Friday 5:30 PM Montreal (DST)
-  workflow_dispatch:
+  workflow_dispatch:   # manual trigger only
 
 jobs:
   run-script:
