@@ -124,10 +124,11 @@ async function selectTimeSheet(page) {
 async function editTimeSheet(page) {
   // Wait for the time sheet detail page to load and click Edit
   console.log('Waiting for time sheet detail page to load...');
-  await page.waitForSelector('input[type="button"][value="Edit"]', { timeout: 10000 });
+  const editButton = page.getByRole('button', { name: 'Edit', exact: true });
+  await editButton.waitFor({ state: 'visible', timeout: 10000 });
   
   console.log('Clicking Edit button...');
-  await page.click('input[type="button"][value="Edit"]');
+  await editButton.click();
   
   // Wait for the edit form to load
   console.log('Waiting for edit form to load...');
@@ -191,7 +192,7 @@ if (require.main === module) {
       console.log('Username:', USERNAME);
       console.log('Password length:', PASSWORD ? PASSWORD.length : 0);
 
-      const browser = await chromium.launch({ headless: true });
+      const browser = await chromium.launch({ headless: false });
       const page = await browser.newPage();
 
       await login(page, USERNAME, PASSWORD);
